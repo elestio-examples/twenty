@@ -1,0 +1,52 @@
+version: "3.8"
+name: twenty
+
+services:
+  server:
+    image: twentycrm/twenty:${SOFTWARE_VERSION_TAG}
+    restart: always
+    ports:
+      - "172.17.0.1:39973:3000"
+    environment:
+      PORT: 3000
+      PG_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      SERVER_URL: ${SERVER_URL}
+      FRONT_BASE_URL: ${SERVER_URL}
+
+      ENABLE_DB_MIGRATIONS: true
+
+      SIGN_IN_PREFILLED: "true"
+      STORAGE_TYPE: local
+      STORAGE_LOCAL_PATH: .local-storage
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET}
+      LOGIN_TOKEN_SECRET: ${LOGIN_TOKEN_SECRET}
+      REFRESH_TOKEN_SECRET: ${REFRESH_TOKEN_SECRET}
+      FILE_TOKEN_SECRET: ${FILE_TOKEN_SECRET}
+    depends_on:
+      - db
+    volumes:
+      - ./server-local-data:/app/.local-storage
+
+  db:
+    image: elestio/postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - 172.17.0.1:51175:5432
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+
+  pgadmin4:
+    image: elestio/pgadmin:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${ADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${ADMIN_PASSWORD}
+      PGADMIN_LISTEN_PORT: 8080
+    ports:
+      - "172.17.0.1:26565:8080"
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json

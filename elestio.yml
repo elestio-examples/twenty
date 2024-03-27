@@ -1,0 +1,60 @@
+ports:
+  - protocol: "HTTPS"
+    targetProtocol: "HTTPS"
+    listeningPort: "443"
+    targetPort: "26708"
+    targetIP: "172.17.0.1"
+    public: true
+    path: "/"
+    isAuth: false
+  - protocol: "HTTPS"
+    targetProtocol: "HTTP"
+    listeningPort: "63405"
+    targetPort: "26565"
+    targetIP: "172.17.0.1"
+    public: true
+    path: "/"
+    isAuth: false
+
+environments:
+  - key: "SOFTWARE_VERSION_TAG"
+    value: "latest"
+  - key: "ADMIN_EMAIL"
+    value: "[EMAIL]"
+  - key: "ADMIN_PASSWORD"
+    value: "random_password"
+  - key: "SERVER_URL"
+    value: "https://[CI_CD_DOMAIN]"
+  - key: "POSTGRES_PASSWORD"
+    value: "random_password"
+  - key: "POSTGRES_DB"
+    value: "twenty"
+  - key: "POSTGRES_USER"
+    value: "postgres"
+
+config:
+  runTime: "dockerCompose"
+  version: ""
+  framework: ""
+  buildCommand: "docker-compose build"
+  buildDir: "/"
+  runCommand: "docker-compose up -d"
+  icon: ""
+  screenshot: "twenty.png"
+lifeCycleConfig:
+  preInstallCommand: "./scripts/preInstall.sh"
+  postInstallCommand: "./scripts/postInstall.sh"
+  preBackupCommand: "./scripts/preBackup.sh"
+  postBackupCommand: "./scripts/postBackup.sh"
+  preRestoreCommand: "./scripts/preRestore.sh"
+  postRestoreCommand: "./scripts/postRestore.sh"
+  postDeployCommand: "./scripts/postDeploy.sh"
+webUI:
+  - url: "https://[CI_CD_DOMAIN]"
+    label: "Twenty"
+    login: "[ADMIN_EMAIL]"
+    password: "[ADMIN_PASSWORD]"
+  - url: "https://[CI_CD_DOMAIN]:63405"
+    label: "pgAdmin"
+    login: "[ADMIN_EMAIL]"
+    password: "[ADMIN_PASSWORD]"
