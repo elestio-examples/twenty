@@ -1,6 +1,9 @@
 #set env vars
 set -o allexport; source .env; set +o allexport;
 
+mkdir -p ./server-local-data
+chown -R 1000:1000 ./server-local-data
+
 ACCESS_TOKEN_SECRET=$(openssl rand -base64 32)
 LOGIN_TOKEN_SECRET=$(openssl rand -base64 32)
 REFRESH_TOKEN_SECRET=$(openssl rand -base64 32)
@@ -14,7 +17,7 @@ REFRESH_TOKEN_SECRET=${REFRESH_TOKEN_SECRET}
 FILE_TOKEN_SECRET=${FILE_TOKEN_SECRET}
 EOT
 
-cat <<EOT > ./servers.json
+cat <<EOT > ./.env
 {
     "Servers": {
         "1": {

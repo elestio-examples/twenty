@@ -12,7 +12,7 @@ services:
       SERVER_URL: ${SERVER_URL}
       FRONT_BASE_URL: ${SERVER_URL}
 
-      ENABLE_DB_MIGRATIONS: true
+      ENABLE_DB_MIGRATIONS: "true"
 
       SIGN_IN_PREFILLED: "true"
       STORAGE_TYPE: local
