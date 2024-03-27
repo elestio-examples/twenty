@@ -31,6 +31,12 @@ environments:
     value: "twenty"
   - key: "POSTGRES_USER"
     value: "postgres"
+  - key: "EMAIL_FROM_ADDRESS"
+    value: "[DOMAIN]@vm.elestio.app"
+  - key: "EMAIL_SMTP_HOST"
+    value: "172.17.0.1"
+  - key: "EMAIL_SMTP_PORT"
+    value: "25"
 
 config:
   runTime: "dockerCompose"
