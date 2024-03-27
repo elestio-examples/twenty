@@ -9,7 +9,7 @@ LOGIN_TOKEN_SECRET=$(openssl rand -base64 32)
 REFRESH_TOKEN_SECRET=$(openssl rand -base64 32)
 FILE_TOKEN_SECRET=$(openssl rand -base64 32)
 
-cat << EOT >> ./env
+cat << EOT >> ./.env
 
 ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
 LOGIN_TOKEN_SECRET=${LOGIN_TOKEN_SECRET}
