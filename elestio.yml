@@ -37,6 +37,8 @@ environments:
     value: "172.17.0.1"
   - key: "EMAIL_SMTP_PORT"
     value: "25"
+  - key: "IS_SIGN_UP_DISABLED"
+    value: "false"
 
 config:
   runTime: "dockerCompose"

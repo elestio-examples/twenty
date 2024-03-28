@@ -30,6 +30,7 @@ services:
       EMAIL_SMTP_PORT: ${EMAIL_SMTP_PORT}
       PASSWORD_RESET_TOKEN_EXPIRES_IN: 5m
       FRONT_AUTH_CALLBACK_URL: ${SERVER_URL}/verify
+      IS_SIGN_UP_DISABLED: "${IS_SIGN_UP_DISABLED}"
     depends_on:
       - db
     volumes:
