@@ -3,7 +3,7 @@ set -o allexport; source .env; set +o allexport;
 
 #wait until the server is ready
 echo "Waiting for software to be ready ..."
-sleep 90s;
+sleep 150s;
 
 
 curl ${SERVER_URL}/graphql \
@@ -18,6 +18,7 @@ curl ${SERVER_URL}/graphql \
 
   docker-compose down;
 
+sleep 10s;
   sed -i 's~IS_SIGN_UP_DISABLED: "false"~IS_SIGN_UP_DISABLED: "true"~g' ./docker-compose.yml
 
   docker-compose up -d;
