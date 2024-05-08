@@ -35,6 +35,7 @@ services:
       - db
     volumes:
       - ./server-local-data:/app/.local-storage
+      - ./storage:/app/packages/twenty-server/.local-storage/
 
   db:
     image: twentycrm/twenty-postgres:${SOFTWARE_VERSION_TAG}

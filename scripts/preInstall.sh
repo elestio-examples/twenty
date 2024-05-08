@@ -5,6 +5,8 @@ mkdir -p ./server-local-data
 chown -R 1000:1000 ./server-local-data
 mkdir -p ./db-data
 chown -R 1001:1001 ./db-data
+mkdir -p ./storage
+chmod 777 ./storage
 ACCESS_TOKEN_SECRET=$(openssl rand -base64 32)
 LOGIN_TOKEN_SECRET=$(openssl rand -base64 32)
 REFRESH_TOKEN_SECRET=$(openssl rand -base64 32)
