@@ -11,6 +11,8 @@ services:
       PG_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
       SERVER_URL: ${SERVER_URL}
       FRONT_BASE_URL: ${SERVER_URL}
+      REDIS_PORT: 6379
+      REDIS_HOST: redis
 
       ENABLE_DB_MIGRATIONS: "true"
 
@@ -48,6 +50,10 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - 172.17.0.1:51175:5432
+
+  redis:
+    image: redis
+    restart: always
 
   pgadmin4:
     image: elestio/pgadmin:latest
