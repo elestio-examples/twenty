@@ -3,6 +3,8 @@ set -o allexport; source .env; set +o allexport;
 
 mkdir -p ./server-local-data
 chown -R 1000:1000 ./server-local-data
+mkdir -p ./docker-data
+chown -R 1000:1000 ./docker-data
 mkdir -p ./db-data
 chown -R 1001:1001 ./db-data
 mkdir -p ./storage
