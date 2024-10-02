@@ -1,4 +1,4 @@
-# Adding to the docker-compose.yml
+### Add the worker service to the docker-compose.yml if in case not found.
 ```
   worker:
     image: twentycrm/twenty:${SOFTWARE_VERSION_TAG}
@@ -36,12 +36,12 @@
     restart: always
 ```
 
-# Upgrade from v0.23.0 to v0.24.0
+### Upgrade from v0.23.0 to v0.24.0
 ```
 docker-compose exec -T server sh -c "yarn database:migrate:prod"
 docker-compose exec -T server sh -c "yarn command:prod upgrade-0.24"
 ```
-# Upgrade from v0.24.0 to v0.30.0
+### Upgrade from v0.24.0 to v0.30.0
 ```
 docker-compose exec -T server sh -c "yarn database:migrate:prod"
 docker-compose exec -T server sh -c "yarn command:prod upgrade-0.30"
