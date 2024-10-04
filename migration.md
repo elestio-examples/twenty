@@ -46,3 +46,6 @@ docker-compose exec -T server sh -c "yarn command:prod upgrade-0.24"
 docker-compose exec -T server sh -c "yarn database:migrate:prod"
 docker-compose exec -T server sh -c "yarn command:prod upgrade-0.30"
 ```
+
+
+More details check their upgrade doc https://twenty.com/developers/section/self-hosting/upgrade-guide
