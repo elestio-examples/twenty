@@ -13,7 +13,7 @@ services:
       FRONT_BASE_URL: ${SERVER_URL}
       REDIS_PORT: 6379
       REDIS_HOST: redis
-
+      CACHE_STORAGE_TYPE: redis
       ENABLE_DB_MIGRATIONS: "true"
 
       SIGN_IN_PREFILLED: "false"
