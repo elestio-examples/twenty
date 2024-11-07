@@ -47,5 +47,18 @@ docker-compose exec -T server sh -c "yarn database:migrate:prod"
 docker-compose exec -T server sh -c "yarn command:prod upgrade-0.30"
 ```
 
+### Upgrade from v0.30.0 to v0.31.0
+```
+docker-compose exec -T server sh -c "yarn database:migrate:prod"
+docker-compose exec -T server sh -c "yarn command:prod upgrade-0.31"
+```
+### Upgrade from v0.31.0 to v0.32.0
+The following environment variables have been changed:
+```
+Removed: REDIS_HOST, REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD
+Added: REDIS_URL
+```
+Update your .env file to use the new `REDIS_URL` variable instead of the individual Redis connection parameters
 
-More details check their upgrade doc https://twenty.com/developers/section/self-hosting/upgrade-guide
+
+For more details check their upgrade doc https://twenty.com/developers/section/self-hosting/upgrade-guide
