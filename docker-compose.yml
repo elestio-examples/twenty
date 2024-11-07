@@ -13,7 +13,7 @@ services:
       FRONT_BASE_URL: ${SERVER_URL}
       REDIS_PORT: 6379
       REDIS_HOST: redis
-      REDIS_HOST: 172.17.0.1
+      REDIS_URL: redis://redis:6379
       CACHE_STORAGE_TYPE: redis
       ENABLE_DB_MIGRATIONS: "true"
 
@@ -52,7 +52,7 @@ services:
       FRONT_BASE_URL: ${SERVER_URL}
       REDIS_PORT: 6379
       REDIS_HOST: redis
-      REDIS_HOST: 172.17.0.1
+      REDIS_URL: redis://redis:6379
       ENABLE_DB_MIGRATIONS: "false" # it already runs on the server
 
       STORAGE_TYPE: local
